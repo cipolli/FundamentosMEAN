@@ -7,25 +7,21 @@
     <script type="text/javascript">
     angular.module('app', [])
     angular.module('app').controller('MeuController', [
-      '$scope',
-      function($scope) {
-        $scope.value = 10
-        $scope.inc = function() {
-          $scope.value++
+      function() {
+        const self = this
+        self.value = 10
+        self.inc = function() {
+          self.value++
         }
       }
     ])
     </script>
   <head>
   <body>
-    <div ng-controller = "MeuController">
-        <h1>{{value}}
-         <input ng-model="value" />
-         <button ng-click="inc()"> Inc</button>
+    <div ng-controller = "MeuController as ctrl">
+        <h1>{{ctrl.value}}
+         <input ng-model="ctrl.value" />
+         <button ng-click="ctrl.inc()"> Inc</button>
     </div>
-    </script>
-  <head>
-  <body>
-    {{1+1}}
   </body>
 </html>

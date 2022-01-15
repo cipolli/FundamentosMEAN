@@ -6,26 +6,22 @@
     <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
     <script type="text/javascript">
     angular.module('app', [])
+    angular.module('app').service('utils', function() {
+       this.upper = function(input){
+        return  input.toUpperCase()
+      }
+    })
     angular.module('app').controller('MeuController', [
-      '$scope',
-      function($scope) {
-        $scope.value = 10
-        $scope.inc = function() {
-          $scope.value++
-        }
+      'utils',
+      function(utils) {
+          const self = this
+          self.value = utils.upper("textão")
       }
     ])
     </script>
   <head>
   <body>
-    <div ng-controller = "MeuController">
-        <h1>{{value}}
-         <input ng-model="value" />
-         <button ng-click="inc()"> Inc</button>
-    </div>
-    </script>
-  <head>
-  <body>
-    {{1+1}}
+    <div ng-controller = "MeuController as ctrl">
+        <h1>{{ctrl.value}}</h1>
   </body>
 </html>
